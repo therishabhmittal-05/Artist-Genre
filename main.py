@@ -2,6 +2,14 @@ import torch
 import torch.nn as nn
 from train import train_one_epoch
 from val import validate_one_epoch
+from data.data_preprocessing import check_image_files
+
+img_root = "/kaggle/input/wikiart"
+df = pd.read_csv("your_file.csv")
+
+# Clean the data
+df = check_image_files(df, img_root)
+
 
 loss_artist = nn.CrossEntropyLoss()
 loss_genre = nn.BCEWithLogitsLoss()
